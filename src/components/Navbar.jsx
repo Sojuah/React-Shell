@@ -1,26 +1,28 @@
 // Navbar.jsx
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   return (
     <nav className="flex items-center justify-between bg-gray-900 text-white p-4 h-14">
-      {/* Logo placeholder */}
+      <button onClick={toggleSidebar} className="text-white focus:outline-none md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
       <div style={{ width: '120px' }}>Logo</div>
 
-      {/* Search input */}
       <div className="flex-grow flex justify-center">
         <input type="text" placeholder="Search..." className="bg-gray-700 text-white p-2 h-6 rounded" />
       </div>
 
-      {/* Avatar with dropdown menu */}
       <div className="relative">
-        <button onClick={toggleMenu} className="flex items-center text-white focus:outline-none">
+      <button onClick={toggleMenu} className="flex items-center text-white focus:outline-none">
           <img src="avatar.jpg" alt="Avatar" className="w-8 h-8 rounded-full mr-2" />
           <span>Username</span>
         </button>
